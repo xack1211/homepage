@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="1000.0933"
-   height="678.45557"
-   viewBox="0 0 5333.831 3618.4297"
+   width="671.05933"
+   height="986.57953"
+   viewBox="0 0 3578.983 5261.7575"
    fill="none"
    version="1.1"
    id="svg173"
-   sodipodi:docname="skillPh.svg"
+   sodipodi:docname="skillWap.svg"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
    xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -96,7 +96,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="0.79627029"
-     inkscape:cx="727.76796"
+     inkscape:cx="729.02381"
      inkscape:cy="352.26732"
      inkscape:window-width="2560"
      inkscape:window-height="1393"
@@ -108,8 +108,8 @@
      id="rect173"
      width="3578.9832"
      height="5261.7573"
-     x="8.8817842e-16"
-     y="-4.4408921e-16"
+     x="0"
+     y="0"
      ry="169.88925" /><rect
      x="153.76709"
      y="557.78308"
@@ -307,7 +307,7 @@
      transform="matrix(15.896218,0,0,15.896218,202.05515,156.8055)"
      style="fill:none;fill-rule:evenodd;stroke:#212121;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><polygon
        id="路径"
-       points="11,5.5 0,2.75 11,0 22,2.75 " /><path
+       points="11,0 22,2.75 11,5.5 0,2.75 " /><path
        d="m 4.95,4.4 v 5.48383 c 0,0 2.75,1.66617 6.05,1.66617 3.3,0 6.05,-1.66617 6.05,-1.66617 V 4.4"
        id="path1-1" /><line
        id="line1"
@@ -536,13 +536,13 @@
        id="g5-5">
 	<polygon
    fill="#ffffff"
-   points="221,166.508 221,177.841 232.334,177.841 232.334,189.175 243.666,189.175 243.666,177.841 255,177.841 255,166.508 243.666,166.508 243.666,155.175 232.334,155.175 232.334,166.508 "
+   points="232.334,177.841 232.334,189.175 243.666,189.175 243.666,177.841 255,177.841 255,166.508 243.666,166.508 243.666,155.175 232.334,155.175 232.334,166.508 221,166.508 221,177.841 "
    id="polygon4" />
 </g><g
        id="g6-2">
 	<polygon
    fill="#ffffff"
-   points="263.5,166.508 263.5,177.841 274.834,177.841 274.834,189.175 286.166,189.175 286.166,177.841 297.5,177.841 297.5,166.508 286.166,166.508 286.166,155.175 274.834,155.175 274.834,166.508 "
+   points="274.834,177.841 274.834,189.175 286.166,189.175 286.166,177.841 297.5,177.841 297.5,166.508 286.166,166.508 286.166,155.175 274.834,155.175 274.834,166.508 263.5,166.508 263.5,177.841 "
    id="polygon5" />
 </g></g><g
      id="g203"
