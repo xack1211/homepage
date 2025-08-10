@@ -224,3 +224,134 @@ window.addEventListener('load', function() {
     }, 100);
 });
 
+
+// 多语言翻译功能
+const translations = {
+    EN: {
+        translate: '🌐 Translate',
+        welcome: "Hello I'm",
+        desc1: '👦 Mentally Health Secondary Student',
+        desc2: '📝 The only way to do <span class="purpleText textBackground">great</span> is to <span class="purpleText textBackground">love</span> what you do.',
+        site: 'site',
+        blogs: 'Blogs',
+        blogs_desc: 'Record my thoughts',
+        cloud: 'Cloud Disk',
+        cloud_desc: 'Store and collect files',
+        lab: 'Cloud Laboratory',
+        lab_desc: 'Collect interesting websites',
+        under: 'Under Construction',
+        soon: 'Coming soon',
+        project: 'project',
+        mcrt: 'MaiCity Railway Transit',
+        mcrt_desc: 'Building a railway transit system in Minecraft',
+        skills: 'skills',
+        footer: 'Zyyo © 2024 |',
+        github: 'Github',
+        recreated: 'Recreated by Jack',
+    },
+    SC: {
+        translate: '🌐 翻译',
+        welcome: '你好，我是',
+        desc1: '👦 心理健康的中学生',
+        desc2: '📝 做伟大的事，唯一的方式就是热爱你所做的。',
+        site: '站点',
+        blogs: '博客',
+        blogs_desc: '记录我的想法',
+        cloud: '云盘',
+        cloud_desc: '存储和收集文件',
+        lab: '云实验室',
+        lab_desc: '收集有趣的网站',
+        under: '建设中',
+        soon: '敬请期待',
+        project: '项目',
+        mcrt: '麦城轨道交通',
+        mcrt_desc: '在 Minecraft 中建设轨道交通系统',
+        skills: '技能',
+        footer: 'Zyyo © 2024 |',
+        github: 'Github',
+        recreated: '由 Jack 重制',
+    },
+    TC: {
+        translate: '🌐 翻譯',
+        welcome: '你好，我是',
+        desc1: '👦 心理健康的中學生',
+        desc2: '📝 做偉大的事，唯一的方式就是熱愛你所做的。',
+        site: '站點',
+        blogs: '部落格',
+        blogs_desc: '記錄我的想法',
+        cloud: '雲盤',
+        cloud_desc: '儲存和收集檔案',
+        lab: '雲實驗室',
+        lab_desc: '收集有趣的網站',
+        under: '建設中',
+        soon: '敬請期待',
+        project: '項目',
+        mcrt: '麥城軌道交通',
+        mcrt_desc: '在 Minecraft 中建設軌道交通系統',
+        skills: '技能',
+        footer: 'Zyyo © 2024 |',
+        github: 'Github',
+        recreated: '由 Jack 重製',
+    }
+};
+
+let currentLang = 'EN';
+
+function applyTranslations(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+    const indicator = document.getElementById('lang-indicator');
+    if (indicator) {
+        indicator.textContent = lang;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('translateRoleBtn');
+    const langBar = document.getElementById('lang-switch-bar');
+    function updateLangBar(lang) {
+        if (!langBar) return;
+        langBar.querySelectorAll('.lang-item').forEach(function(item) {
+            if (item.getAttribute('data-lang') === lang) {
+                item.classList.add('active', 'switch-anim');
+                setTimeout(() => item.classList.remove('switch-anim'), 400);
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+
+    function switchLang(lang) {
+        currentLang = lang;
+        applyTranslations(currentLang);
+        updateLangBar(currentLang);
+    }
+
+    if (btn && langBar) {
+        // 循环切换按钮点击
+        btn.addEventListener('click', function (e) {
+            // 如果点击的是语言条，交由语言条处理
+            if (e.target.classList.contains('lang-item')) return;
+            if (currentLang === 'EN') switchLang('SC');
+            else if (currentLang === 'SC') switchLang('TC');
+            else switchLang('EN');
+        });
+        // 语言条点击切换
+        langBar.querySelectorAll('.lang-item').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                const lang = item.getAttribute('data-lang');
+                if (lang !== currentLang) {
+                    switchLang(lang);
+                }
+                e.stopPropagation();
+            });
+        });
+        applyTranslations(currentLang);
+        updateLangBar(currentLang);
+    }
+});
+

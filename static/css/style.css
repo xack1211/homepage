@@ -1,4 +1,90 @@
 @font-face {
+    font-family: 'Noto Sans SC';
+    src: local('Noto Sans SC'), url('https://fonts.gstatic.com/s/notosanssc/v20/k3kJo84MPvpLmixcA63oeALZTYKL.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto Sans TC';
+    src: local('Noto Sans TC'), url('https://fonts.gstatic.com/s/notosanstc/v21/-nF6OG414u0n7tZWg6F8z4Nq7pE.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+/* 修正按钮位置和尺寸 */
+.left-div.left-translate {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 10px 0 0 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 翻译按钮样式 */
+#translateRoleBtn {
+    width: 90%;
+    min-width: 180px;
+    max-width: 220px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(33,150,243,0.08);
+    background: var(--item_bg_color);
+    border: none;
+    padding: 0;
+    transition: box-shadow 0.3s;
+    display: block;
+    overflow: hidden;
+}
+
+/* 按钮内容区域样式 */
+#translateRoleBtn .projectItemLeft {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* 语言切换条样式 */
+#lang-switch-bar {
+    font-size: 1.1em;
+    margin-top: 0.5em;
+    justify-content: center;
+}
+/* 中文高亮字体 */
+.lang-item[data-lang="SC"].active {
+    font-family: 'Noto Sans SC', 'b', 'a', sans-serif !important;
+}
+.lang-item[data-lang="TC"].active {
+    font-family: 'Noto Sans TC', 'b', 'a', sans-serif !important;
+}
+/* 语言切换条动画样式 */
+.lang-item {
+    cursor: pointer;
+    padding: 0.1em 0.6em;
+    border-radius: 1em;
+    font-size: 1em;
+    transition: background 0.3s, color 0.3s, font-weight 0.3s;
+}
+.lang-item.active {
+    background: #2196f3;
+    color: #fff !important;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.12);
+}
+.lang-item.switch-anim {
+    animation: langSwitchAnim 0.4s cubic-bezier(.4,0,.2,1);
+}
+@keyframes langSwitchAnim {
+    0% { transform: scale(1) translateY(0); opacity: 0.5; }
+    50% { transform: scale(1.2) translateY(-5px); opacity: 1; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+@font-face {
     font-family: "a";
     /*中文字体*/
     src: url();
