@@ -1,0 +1,17 @@
+{
+  "name": "fullstack-alist-server",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "ssh2-sftp-client": "^11.0.0",
+    "mime-types": "^2.1.35",
+    "googleapis": "^123.0.0"
+  }
+}

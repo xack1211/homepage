@@ -1,0 +1,7 @@
+# server config and tokens
+/server/config.json
+/server/gdrive-tokens.json
+
+# node modules
+/server/node_modules
+/client/node_modules

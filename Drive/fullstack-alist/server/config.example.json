@@ -1,0 +1,35 @@
+{
+  "providers": [
+    {
+      "id": "local",
+      "name": "Local Disk",
+      "type": "local",
+      "options": {
+        "root": "./test-root"
+      }
+    },
+    {
+      "id": "raspi1",
+      "name": "Raspi (SFTP)",
+      "type": "raspi",
+      "options": {
+        "host": "raspberrypi.local",
+        "port": 22,
+        "username": "pi",
+        "password": "",  
+        "privateKeyPath": "", 
+        "root": "/home/pi"
+      }
+    },
+    {
+      "id": "gdrive",
+      "name": "Google Drive (stub)",
+      "type": "gdrive",
+      "options": {
+        "clientId": "YOUR_CLIENT_ID",
+        "clientSecret": "YOUR_CLIENT_SECRET",
+        "redirectUri": "http://localhost:4000/api/gdrive/callback"
+      }
+    }
+  ]
+}
