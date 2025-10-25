@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Blog Posts</title>
+    <link rel="icon" href="./blog.png">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f5f6fa;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 80px auto 2rem;
+            padding: 1rem;
+        }
+
+        .admin-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .post-form textarea,
+        .post-form input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="file"] {
+            margin: 0.5rem 0;
+        }
+
+        button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        button:hover {
+            background: #c0392b;
+        }
+
+        .post-list .post {
+            background: #fff;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Admin Panel</h1>
+            <div>
+                <a href="index.html">Back to Blog</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="admin-section">
+            <h2>Create New Post</h2>
+            <div class="post-form">
+                <input type="text" id="postTitle" placeholder="Post Title">
+                <textarea id="postContent" rows="5" placeholder="Post Content (Markdown supported)"></textarea>
+                <button onclick="addPost()">Add Post</button>
+            </div>
+        </section>
+
+        <section class="admin-section">
+            <h2>Sync Posts Across Devices</h2>
+            <button onclick="exportPosts()">Export Posts</button>
+            <input type="file" id="importPosts" accept=".json" onchange="importPosts(event)">
+        </section>
+
+        <section class="admin-section">
+            <h2>Manage Posts</h2>
+            <div class="post-list" id="postList"></div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Global posts array to store current posts
+        let posts = [];
+
+        // Load posts from blogPosts.json
+        async function loadPosts() {
+            try {
+                const response = await fetch('blogPosts.json');
+                if (response.ok) {
+                    posts = await response.json();
+                } else {
+                    posts = [];
+                }
+            } catch (error) {
+                console.warn('Failed to load blogPosts.json, starting with empty list:', error);
+                posts = [];
+            }
+            renderPosts();
+        }
+
+        // Render posts to the page
+        function renderPosts() {
+            const postList = document.getElementById('postList');
+            postList.innerHTML = '';
+            posts.forEach((post, index) => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = `
+                    <div>
+                        <h3>${post.title}</h3>
+                        <p>${marked.parse(post.content)}</p>
+                    </div>
+                    <div>
+                        <button onclick="editPost(${index})">Edit</button>
+                        <button onclick="deletePost(${index})">Delete</button>
+                    </div>
+                `;
+                postList.appendChild(postElement);
+            });
+        }
+
+        // Add new post
+        function addPost() {
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            if (title && content) {
+                posts.push({ title, content });
+                saveAndExportPosts();
+                document.getElementById('postTitle').value = '';
+                document.getElementById('postContent').value = '';
+                renderPosts();
+            } else {
+                alert('Please fill in both title and content.');
+            }
+        }
+
+        // Edit post
+        function editPost(index) {
+            const newTitle = prompt('Edit title:', posts[index].title);
+            const newContent = prompt('Edit content (Markdown supported):', posts[index].content);
+            if (newTitle && newContent) {
+                posts[index] = { title: newTitle, content: newContent };
+                saveAndExportPosts();
+                renderPosts();
+            }
+        }
+
+        // Delete post
+        function deletePost(index) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                posts.splice(index, 1);
+                saveAndExportPosts();
+                renderPosts();
+            }
+        }
+
+        // Export posts to a JSON file
+        function exportPosts() {
+            const dataStr = JSON.stringify(posts, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'blogPosts.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        // Save posts to localStorage and export
+        function saveAndExportPosts() {
+            localStorage.setItem('blogPosts', JSON.stringify(posts));
+            exportPosts();
+        }
+
+        // Import posts from a JSON file
+        function importPosts(event) {
+            const file = event.target.files[0];
+            if (file && file.type === 'application/json') {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const importedPosts = JSON.parse(e.target.result);
+                        if (Array.isArray(importedPosts)) {
+                            posts = importedPosts;
+                            saveAndExportPosts();
+                            renderPosts();
+                            alert('Posts imported successfully!');
+                        } else {
+                            alert('Invalid file format. Please upload a valid JSON file.');
+                        }
+                    } catch (error) {
+                        alert('Error importing posts: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            } else {
+                alert('Please select a valid JSON file.');
+            }
+            // Reset file input
+            document.getElementById('importPosts').value = '';
+        }
+
+        // Load posts on page load
+        window.onload = loadPosts;
+    </script>
+</body>
+</html>

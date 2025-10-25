@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Favorite Websites</title>
+  <link rel="icon" href="./lab.png">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Ubuntu Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      background: linear-gradient(45deg, rgb(0, 47, 167), rgb(255, 218, 26));
+      background-size: 200% 200%;
+      animation: gradientShift 15s ease infinite;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .navbar {
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .nav-link {
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-link:hover {
+      color: rgb(0, 47, 167) !important;
+      transform: translateY(-2px);
+    }
+    .page {
+      padding: 20px;
+    }
+    .card {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.5s ease;
+      margin-bottom: 20px;
+      border: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      background: rgba(255, 255, 255, 0.95);
+    }
+    .card.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+    .card-img-top {
+      width: 32px;
+      height: 32px;
+      margin: 10px auto;
+      transition: transform 0.3s ease;
+    }
+    .card:hover .card-img-top {
+      transform: scale(1.2);
+    }
+    .btn-primary {
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    #websitesContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .error-message {
+      color: rgb(255, 218, 26);
+      display: none;
+      margin-top: 5px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Favorite Websites</a>
+      <div class="navbar-nav">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="admin.html">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Page -->
+  <div id="homePage" class="page">
+    <div class="container">
+      <h2 class="mb-4 text-white">My Favorite Websites</h2>
+      <div id="websitesContainer"></div>
+      <p id="noWebsitesMessage" class="text-white">No websites added yet. Go to the admin page to add some.</p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let websites = [];
+
+    // Load websites on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadWebsites();
+      renderHomePage();
+    });
+
+    // Load websites from local storage and websites.json
+    async function loadWebsites() {
+      // Load from local storage
+      const stored = localStorage.getItem('websites');
+      websites = stored ? JSON.parse(stored) : [];
+
+      // Fetch from websites.json
+      try {
+        const response = await fetch('/websites.json');
+        if (!response.ok) throw new Error('Failed to fetch websites.json');
+        const jsonData = await response.json();
+        if (!Array.isArray(jsonData)) throw new Error('Invalid JSON format');
+
+        // Merge jsonData with local storage, avoiding duplicates by URL
+        jsonData.forEach(newSite => {
+          if (!websites.some(site => site.url === newSite.url)) {
+            // Ensure unique ID
+            newSite.id = newSite.id || Date.now().toString() + Math.random().toString(36).slice(2);
+            websites.push(newSite);
+          }
+        });
+
+        // Save merged data to local storage
+        localStorage.setItem('websites', JSON.stringify(websites));
+      } catch (err) {
+        console.error('Error loading websites.json:', err.message);
+      }
+    }
+
+    // Render home page
+    function renderHomePage() {
+      const container = document.getElementById('websitesContainer');
+      container.innerHTML = '';
+      document.getElementById('noWebsitesMessage').style.display = websites.length === 0 ? 'block' : 'none';
+
+      websites.forEach((site, index) => {
+        const domain = new URL(site.url).hostname;
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="https://www.google.com/s2/favicons?domain=${domain}" class="card-img-top" alt="Logo of ${domain}">
+          <div class="card-body text-center">
+            <h5 class="card-title">${domain}</h5>
+            ${site.description ? `<p class="card-text">${site.description}</p>` : ''}
+            <a href="${site.url}" target="_blank" class="btn btn-primary btn-sm">Visit</a>
+          </div>
+        `;
+        container.appendChild(card);
+        setTimeout(() => card.classList.add('fade-in'), index * 150);
+      });
+    }
+  </script>
+</body>
+</html>
