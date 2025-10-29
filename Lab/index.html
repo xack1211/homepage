@@ -119,16 +119,32 @@
 
     // Load websites from local storage and websites.json
     async function loadWebsites() {
-      // Load from local storage
-      const stored = localStorage.getItem('websites');
-      websites = stored ? JSON.parse(stored) : [];
-
-      // Fetch from websites.json
       try {
-        const response = await fetch('/websites.json');
-        if (!response.ok) throw new Error('Failed to fetch websites.json');
+        // Load from local storage
+        const stored = localStorage.getItem('websites');
+        if (stored) {
+          console.log('Loading from localStorage:', stored);
+          websites = JSON.parse(stored);
+        } else {
+          console.log('No data in localStorage');
+          websites = [];
+        }
+
+        // Fetch from websites.json
+        console.log('Fetching websites.json...');
+        const response = await fetch('./websites.json');
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch websites.json: ${response.status} ${response.statusText}`);
+        }
+        
         const jsonData = await response.json();
-        if (!Array.isArray(jsonData)) throw new Error('Invalid JSON format');
+        console.log('Loaded JSON data:', jsonData);
+        
+        if (!Array.isArray(jsonData)) {
+          throw new Error('Invalid JSON format: expected an array');
+        }
 
         // Merge jsonData with local storage, avoiding duplicates by URL
         jsonData.forEach(newSite => {
