@@ -1,337 +1,675 @@
 <!DOCTYPE html>
-<html class="xack.site" lang="en">
-
-<head class="zyyo.net">
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Xack - Personal Portfolio</title>
-	<link rel="icon" href="./static/img/jack.ico">
-	<meta name="description" content="Explore the personal portfolio of Jack Xu, a student passionate about coding, table tennis, and creative writing. Learn more about his projects, skills, and interests.">
-	<meta name="keywords" content="Xack, Jack Xu, Portfolio, Coding, Table Tennis, Novelist, Personal Website">
-	<meta name="author" content="Jack Xu">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta property="og:title" content="Xack - Personal Portfolio">
-	<meta property="og:description" content="Explore the personal portfolio of Jack Xu, a student passionate about coding, table tennis, and creative writing. Learn more about his projects, skills, and interests.">
-	<meta property="og:image" content="./static/img/logo.png">
-	<meta property="og:url" content="https://xack.site">
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Xack - Personal Portfolio">
-	<meta name="twitter:description" content="Explore the personal portfolio of Jack Xu, a student passionate about coding, table tennis, and creative writing. Learn more about his projects, skills, and interests.">
-	<meta name="twitter:image" content="./static/img/logo.png">
-
-	<link rel="stylesheet" href="./static/css/style.css">
-	<link rel="stylesheet" href="./static/css/root.css">
-
-
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Xack | Modern Portfolio - Student & Developer</title>
+    <meta name="description" content="Jack Xu's modern portfolio showcasing coding projects, skills in Python/C++, and creative pursuits in table tennis and writing. Secondary student from Hong Kong.">
+    <meta name="keywords" content="Jack Xu, Xack, Portfolio, Web Developer, Student, Python, C++, Hong Kong, Table Tennis, Creative Writing, Minecraft, Modern Design">
+    <meta name="author" content="Jack Xu">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xack.site/">
+    <meta property="og:title" content="Xack | Modern Portfolio - Student & Developer">
+    <meta property="og:description" content="Jack Xu's modern portfolio showcasing coding projects, skills in Python/C++, and creative pursuits in table tennis and writing.">
+    <meta property="og:image" content="https://xack.site/static/img/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://xack.site/">
+    <meta name="twitter:title" content="Xack | Modern Portfolio - Student & Developer">
+    <meta name="twitter:description" content="Jack Xu's modern portfolio showcasing coding projects, skills in Python/C++, and creative pursuits in table tennis and writing.">
+    <meta name="twitter:image" content="https://xack.site/static/img/logo.png">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="./static/img/logo.png">
+    <link rel="icon" type="image/x-icon" href="./static/img/jack.ico">
+    
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./static/css/modern.css">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="./static/img/logo.png" as="image">
+    
+    <!-- CSS Variables Theme -->
+    <style>
+        :root {
+            /* Bold Gradient Colors */
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --danger: #F44336;
+            
+            /* Gradient Backgrounds */
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, #FF8E53 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --gradient-light: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            
+            /* 3D Shadows */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --shadow-xl: 0 40px 80px rgba(0,0,0,0.2);
+            --shadow-3d: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Poppins', sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 2rem;
+            --space-xl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-normal: 300ms ease;
+            --transition-slow: 500ms ease;
+            --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Theme Colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --border-color: rgba(0,0,0,0.1);
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0c0;
+            --border-color: rgba(255,255,255,0.1);
+            --shadow-3d: 8px 8px 16px rgba(0,0,0,0.3), -8px -8px 16px rgba(255,255,255,0.05);
+            --gradient-light: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%);
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hide scrollbar but keep functionality */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) transparent;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+        }
+    </style>
 </head>
-
 <body>
-	<div id="zyyo-loading">
-		<div id="zyyo-loading-center">
-		</div>
-	</div>
-	<div class="zyyo-filter"></div>
-
-	<div class="zyyo-main">
-		<div class="zyyo-left">
-			<div class="logo" style="background-image: url(./static/img/logo.png);">
-				<img style="position: absolute;top:-15%;left:-10%;width: 120%; aspect-ratio: 1/1;"
-					src="./static/img/logokuang.png">
-			</div>
-			<div class="left-div left-des">
-				<div class="left-des-item"><svg t="1705773709627" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1478"><path d="M512 249.976471c-99.388235 0-180.705882 81.317647-180.705882 180.705882s81.317647 180.705882 180.705882 180.705882 180.705882-81.317647 180.705882-180.705882-81.317647-180.705882-180.705882-180.705882z m0 301.17647c-66.258824 0-120.470588-54.211765-120.470588-120.470588s54.211765-120.470588 120.470588-120.470588 120.470588 54.211765 120.470588 120.470588-54.211765 120.470588-120.470588 120.470588z" p-id="1479"></path><path d="M512 39.152941c-216.847059 0-391.529412 174.682353-391.529412 391.529412 0 349.364706 391.529412 572.235294 391.529412 572.235294s391.529412-222.870588 391.529412-572.235294c0-216.847059-174.682353-391.529412-391.529412-391.529412z m0 891.482353C424.658824 873.411765 180.705882 686.682353 180.705882 430.682353c0-183.717647 147.576471-331.294118 331.294118-331.294118s331.294118 147.576471 331.294118 331.294118c0 256-243.952941 442.729412-331.294118 499.952941z" p-id="1480"></path></svg>Hong Kong SAR
-				</div>
-				<div class="left-des-item"><svg t="1705773906032" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2474"><path d="M729.6 234.666667H294.4V157.866667a51.2 51.2 0 0 1 51.2-51.2h332.8a51.2 51.2 0 0 1 51.2 51.2v76.8z m179.2 51.2a51.2 51.2 0 0 1 51.2 51.2v512a51.2 51.2 0 0 1-51.2 51.2H115.2a51.2 51.2 0 0 1-51.2-51.2v-512a51.2 51.2 0 0 1 51.2-51.2h793.557333z m-768 172.032c0 16.384 13.312 29.696 29.696 29.696h683.008a29.696 29.696 0 1 0 0-59.392H170.410667a29.696 29.696 0 0 0-29.696 29.696z m252.416 118.784c0 16.384 13.312 29.696 29.696 29.696h178.176a29.696 29.696 0 1 0 0-59.392H422.912a29.738667 29.738667 0 0 0-29.696 29.696z" p-id="2475"></path></svg>Student</div>
-			</div>
-
-			<div class="left-div left-tag">
-				<div class="left-tag-item">Kindergarten Master
-				</div>
-				<div class="left-tag-item">Coding
-				</div>
-				<div class="left-tag-item">🏓Table Tennis
-				</div>
-				<div class="left-tag-item">Sigma
-				</div>
-				<div class="left-tag-item">Windows 11
-				</div>
-				<div class="left-tag-item">Novelist
-				</div>
-				<div class="left-tag-item">Rainow Six Siege
-				</div>
-				<div class="left-tag-item">Minecraft</div>
-			</div>
-			
-		</div>
-		<div class="zyyo-right">
-			<header>
-				<div class="index-logo" style="background-image: url(./static/img/logo.png);">
-					<img style="position: absolute;top:-15%;left:-10%;width: 120%; aspect-ratio: 1/1;"
-						src="./static/img/logokuang.png">
-				</div>
-				<div class="welcome">
-					   <span data-i18n="welcome">Hello I' m</span> <span class="gradientText">Xu Jack </span>
-				</div>
-				<div class="description">👦 <span class="purpleText">Mentally Health</span> Secondary Student
-				</div>
-				<div class="description">📝 The only way to do <span class="purpleText textBackground">great</span> is
-					to <span class="purpleText textBackground">love</span> what you do. </div>
-
-				<div class="iconContainer">
-					<a class="iconItem" onclick="" href="https://github.com/ZYYO666" target="_blank">
-						<svg t="1704870335945" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2487">
-                            <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"  p-id="2488"></path>
-                        </svg>
-						<div class="iconTip">Github</div>
-					</a><a class="iconItem" onclick="" href="mailto:garyhk2022@gmail.com">
-						<svg t="1704870588438" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3174" >
-                            <path d="M926.47619 355.644952V780.190476a73.142857 73.142857 0 0 1-73.142857 73.142857H170.666667a73.142857 73.142857 0 0 1-73.142857-73.142857V355.644952l304.103619 257.828572a170.666667 170.666667 0 0 0 220.745142 0L926.47619 355.644952zM853.333333 170.666667a74.044952 74.044952 0 0 1 26.087619 4.778666 72.704 72.704 0 0 1 30.622477 22.186667 73.508571 73.508571 0 0 1 10.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857 0 0 1-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048 0 0 1 40.155428-65.292191A72.97219 72.97219 0 0 1 170.666667 170.666667h682.666666z"  p-id="3175"></path>
-                        </svg>
-						<div class="iconTip">Mail</div>
-					</a><a class="iconItem" onclick="pop('./static/img/xack.1211_qr.png')" href="javascript:void(0)">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-							<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-						</svg>
-					<div class="iconTip">Instagram</div>
-					</a><a class="iconItem" onclick="pop('./static/img/wa.jpg')" href="javascript:void(0)">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-							<path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-						</svg>
-						<div class="iconTip">WhatsApp</div>
-					</a>  <a class="switch" href="javascript:void(0)">
-						<div class="onoffswitch">
-							<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
-								checked>
-							<label class="onoffswitch-label" for="myonoffswitch">
-								<span class="onoffswitch-inner"></span>
-								<span class="onoffswitch-switch"></span>
-							</label>
-						</div>
-					</a>
-				</div>
-
-				<div class="tanChiShe">
-					<img id="tanChiShe" src="./static/svg/snake-Light.svg" alt="">
-				</div>
-			</header>
-
-
-
-
-
-
-			<content>
-				<div class="title"><svg t="1705257422086" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1891" >
-                        <path d="M629.333333 202.666667v213.333333h277.333334v448h-512v-213.333333h-277.333334v-448h512z m213.333334 277.333333h-213.333334v170.666667h-170.666666v149.333333h384v-320z m-277.333334-213.333333h-384v320h213.333334v-170.666667h170.666666v-149.333333z m0 213.333333h-106.666666v106.666667h106.666666v-106.666667z"  p-id="1892"></path>
-                    </svg>site </div>
-				<div class="projectList"><a class="projectItem a" target="_blank" href="https://hexo.xack.site">
-						<div class="projectItemLeft">
-							<h1>Blogs</h1>
-							<p>Record my thoughts</p>
-						</div>
-						<div class="projectItemRight">
-							<img src="./static/img/i1.png" alt="">
-						</div>
-
-					</a><a class="projectItem a" target="_blank" href="https://alist.xack.site">
-						<div class="projectItemLeft">
-							<h1>Cloud Disk</h1>
-							<p>Store and collect files</p>
-						</div>
-						<div class="projectItemRight">
-							<img src="./static/img/i2.png" alt="">
-						</div>
-
-					</a>
-					<a class="projectItem a" target="_blank" href="Lab/index.html">
-						<div class="projectItemLeft">
-							<h1>Cloud Laboratory</h1>
-							<p>Collect interesting websites</p>
-						</div>
-						<div class="projectItemRight">
-							<img src="./static/img/i4.png" alt="">
-						</div>
-
-					</a><a class="projectItem a" target="_blank" href="https://www.google.com.hk">
-						<div class="projectItemLeft">
-							<h1>Under Construction</h1>
-							<p>Coming soon</p>
-						</div>
-						<div class="projectItemRight">
-							<img src="./static/img/i4.png" alt="">
-						</div>
-
-					</a></div>
-				<div class="title"><svg t="1705257422086" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1891" >
-                        <path d="M629.333333 202.666667v213.333333h277.333334v448h-512v-213.333333h-277.333334v-448h512z m213.333334 277.333333h-213.333334v170.666667h-170.666666v149.333333h384v-320z m-277.333334-213.333333h-384v320h213.333334v-170.666667h170.666666v-149.333333z m0 213.333333h-106.666666v106.666667h106.666666v-106.666667z"  p-id="1892"></path>
-                    </svg>project </div>
-				<div class="projectList"><a class="projectItem b" target="_blank" href="https://mcrt.xack.site">
-						<div class="projectItemLeft">
-							<h1>MaiCity Railway Transit</h1>
-							<p>Building a railway transit system in Minecraft</p>
-						</div>
-						<div class="projectItemRight">
-							<img src="./static/img/i1.png" alt="">
-						</div>
-
-					</a><a class="projectItem b" target="_blank" href="Quizzes/Quiz1.html">
-						<div class="projectItemLeft">
-							<h1>Learn with me!</h1>
-							<p>This records the latest stuff I learnt about HTML5</p>
-						</div>
-						<div class="projectItemRight">
-							<img src="./static/img/i2.png" alt="">
-						</div>
-
-					</a>
-					<a class="projectItem b" target="_blank" href="https://www.google.com.hk">
-						<div class="projectItemLeft">
-							<h1>Under Construction</h1>
-							<p>Coming soon</p>
-						</div>
-						<div class="projectItemRight">
-							<img src="./static/img/i4.png" alt="">
-						</div>
-
-					</a><a class="projectItem b" target="_blank" href="https://www.google.com.hk">
-						<div class="projectItemLeft">
-							<h1>Under Construction</h1>
-							<p>Coming soon</p>
-						</div>
-						<div class="projectItemRight">
-							<img src="./static/img/i4.png" alt="">
-						</div>
-
-					</a></div>
-			
-			
-				<div class="title">
-					<svg t="1705257823317" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7833" >
-                        <path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333zM416.714667 138.666667L270.453333 522.581333h166.869334a32 32 0 0 1 30.933333 40.181334l-61.130667 230.954666 322.176-367.114666H565.312c-22.72 0-38.208-23.018667-29.632-44.064l99.36-243.882667H416.714667z"  p-id="7834"></path>
-                    </svg>
-					skills
-				</div>
-                <div class="skill-section">
-                    <div class="skill-group" id="academic-skills">
-                        <div class="skill-item">
-                            <div class="skill-icon">中</div>
-                            <span class="skill-name">Chinese</span>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" data-skill="25"></div>
-                            </div>
+    <!-- Loading Animation -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-shape" style="background-image: url('./static/img/logo.png');"></div>
+            </div>
+            <div class="loading-text">
+                <span class="char" style="--i:1">X</span>
+                <span class="char" style="--i:2">A</span>
+                <span class="char" style="--i:3">C</span>
+                <span class="char" style="--i:4">K</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+                </div>
+                </div>
+            </div>
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div class="hero-badge" data-i18n="hero.hello">Hello, I'm</div>
+                        <h1 class="hero-title">
+                            <span class="title-gradient" data-i18n="hero.name">Jack Xu</span>
+                            <span class="title-sub" data-i18n="hero.title">Student & Developer</span>
+                        </h1>
+                        <p class="hero-description" data-i18n="hero.description">A mentally healthy secondary student from Hong Kong SAR, passionate about coding, table tennis, and creative writing. Building the future one line of code at a time.</p>
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary" data-hover="View Projects →">
+                                 <span>View Projects</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary" data-hover="Get In Touch →">
+                                 <span>Contact Me</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="2"/>
+                                    <path d="M22 6l-10 7L2 6" stroke-width="2"/>
+                                </svg>
+                            </a>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">En</div>
-                            <span class="skill-name">English</span>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" data-skill="50"></div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-value">10+</div>
+                                <div class="stat-label" data-i18n="hero.stats.projects">Projects</div>
                             </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">M</div>
-                            <span class="skill-name">Maths</span>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" data-skill="55"></div>
+                            <div class="stat">
+                                <div class="stat-value">2+</div>
+                                <div class="stat-label" data-i18n="hero.stats.experience">Years Experience</div>
                             </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">Sc</div>
-                            <span class="skill-name">Science</span>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" data-skill="70"></div>
+                            <div class="stat">
+                                <div class="stat-value">100+</div>
+                                <div class="stat-label" data-i18n="hero.stats.contributions">GitHub Contributions</div>
                             </div>
                         </div>
                     </div>
-                    <div class="skill-group" id="programming-skills">
-                        <div class="skill-item">
-                            <div class="skill-icon">Py</div>
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" data-skill="60"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">C++</div>
-                            <span class="skill-name">C++</span>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" data-skill="30"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">H</div>
-                            <span class="skill-name">HTML</span>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" data-skill="10"></div>
+                    <div class="hero-visual">
+                        <div class="floating-card profile-card">
+                            <div class="card-inner">
+                                <div class="profile-image">
+                                    <img src="./static/img/logo.png" alt="Jack Xu">
+                                    <div class="profile-glow"></div>
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Jack Xu</h3>
+                                    <p>Student & Developer</p>
+                                </div>
+                                <div class="profile-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">C++</span>
+                                    <span class="tag">Web Dev</span>
+                                    <span class="tag">Table Tennis</span>
+                                </div>
+                                <div class="social-links">
+                                    <a href="https://github.com/ZYYO666" target="_blank" class="social-link">
+                                        <div class="social-icon">
+                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                            </svg>
+                                        </div>
+                                        <span>GitHub</span>
+                                    </a>
+                                    <a href="mailto:garyhk2022@gmail.com" class="social-link">
+                                        <div class="social-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="2"/>
+                                                <path d="M22 6l-10 7L2 6" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <span>Email</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-			</content>
-		</div>
-	</div>
-	<footer>
-		Zyyo © 2024 |
-		<a href="https://github.com/ZYYO666" target="_blank">Github</a> | Recreated by Jack
-		
-	</footer>
-	<div class="tc">
-		<div onclick="" class="tc-main">
-			<img class="tc-img" src="" alt="" srcset="">
-		</div>
-
-	</div>
-    <script>
-        // Function to animate skill bars
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-bar');
-            
-            function isElementInViewport(el) {
-                const rect = el.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-
-            function animateVisibleBars() {
-                skillBars.forEach(bar => {
-                    if (isElementInViewport(bar) && !bar.classList.contains('animated')) {
-                        const skillValue = bar.getAttribute('data-skill');
-                        bar.style.width = skillValue + '%';
-                        bar.classList.add('animated');
-                    }
-                });
-            }
-
-            // Initial animation for visible bars
-            animateVisibleBars();
-
-            // Animate on scroll
-            window.addEventListener('scroll', animateVisibleBars);
-        }
-
-        // Start animation when the page loads
-        document.addEventListener('DOMContentLoaded', animateSkillBars);
-
-        // Re-run animation when dark mode changes
-        document.querySelector('.onoffswitch-checkbox').addEventListener('change', function() {
-            // Reset animations
-            document.querySelectorAll('.skill-bar').forEach(bar => {
-                bar.style.width = '0';
-                bar.classList.remove('animated');
-            });
-            // Re-trigger animations
-            setTimeout(animateSkillBars, 100);
-        });
-    </script>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge" data-i18n="projects.badge">💻 My Work</div>
+                    <h2 class="section-title" data-i18n="projects.title">Featured Projects</h2>
+                    <p class="section-description" data-i18n="projects.subtitle">A collection of my latest work and experiments</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Site Projects -->
+                    <div class="project-category">
+                        <h3 class="category-title" data-i18n="projects.category.sites">🚀 Sites & Platforms</h3>
+                        <div class="projects-container">
+                            <a href="https://hexo.xack.site" target="_blank" class="project-card" data-hover="Visit Site →">
+                                <div class="project-card-inner">
+                                    <div class="project-icon">
+                                        <div class="icon-circle" style="background: var(--gradient-primary);">
+                                            📝
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h4 data-i18n="project.blog.title">Personal Blog</h4>
+                                        <p data-i18n="project.blog.desc">Record my thoughts and learning journey</p>
+                                        <div class="project-tags">
+                                            <span class="tech-tag">Hexo</span>
+                                            <span class="tech-tag">Markdown</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-arrow">→</div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://alist.xack.site" target="_blank" class="project-card" data-hover="Visit Site →">
+                                <div class="project-card-inner">
+                                    <div class="project-icon">
+                                        <div class="icon-circle" style="background: var(--gradient-secondary);">
+                                            ☁️
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h4>Cloud Disk</h4>
+                                        <p>Store and collect files in the cloud</p>
+                                        <div class="project-tags">
+                                            <span class="tech-tag">AList</span>
+                                            <span class="tech-tag">Storage</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-arrow">→</div>
+                                </div>
+                            </a>
+                            
+                            <a href="Lab/index.html" target="_blank" class="project-card" data-hover="Visit Site →">
+                                <div class="project-card-inner">
+                                    <div class="project-icon">
+                                        <div class="icon-circle" style="background: linear-gradient(135deg, #36D1DC 0%, #5D26C1 100%);">
+                                            🔬
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h4>Cloud Laboratory</h4>
+                                        <p>Collection of interesting websites and experiments</p>
+                                        <div class="project-tags">
+                                            <span class="tech-tag">Experiments</span>
+                                            <span class="tech-tag">Collection</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-arrow">→</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Coding Projects -->
+                    <div class="project-category">
+                        <h3 class="category-title" data-i18n="projects.category.coding">👨‍💻 Coding Projects</h3>
+                        <div class="projects-container">
+                            <a href="https://mcrt.xack.site" target="_blank" class="project-card" data-hover="Visit Site →">
+                                <div class="project-card-inner">
+                                    <div class="project-icon">
+                                        <div class="icon-circle" style="background: linear-gradient(135deg, #FF6584 0%, #FF8E53 100%);">
+                                            🚇
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h4>MaiCity Railway Transit</h4>
+                                        <p>Building a railway transit system in Minecraft</p>
+                                        <div class="project-tags">
+                                            <span class="tech-tag">Minecraft</span>
+                                            <span class="tech-tag">Transport</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-arrow">→</div>
+                                </div>
+                            </a>
+                            
+                            <a href="Quizzes/Quiz1.html" target="_blank" class="project-card" data-hover="Try Quiz →">
+                                <div class="project-card-inner">
+                                    <div class="project-icon">
+                                        <div class="icon-circle" style="background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);">
+                                            📚
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h4>Learn With Me!</h4>
+                                        <p>Interactive quizzes about HTML5 and web development</p>
+                                        <div class="project-tags">
+                                            <span class="tech-tag">HTML5</span>
+                                            <span class="tech-tag">Quiz</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-arrow">→</div>
+                                </div>
+                            </a>
+                            
+                            <div class="project-card coming-soon">
+                                <div class="project-card-inner">
+                                    <div class="project-icon">
+                                        <div class="icon-circle" style="background: var(--bg-secondary);">
+                                            🚧
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h4>More Coming Soon</h4>
+                                        <p>Working on exciting new projects</p>
+                                        <div class="project-tags">
+                                            <span class="tech-tag">In Progress</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge" data-i18n="skills.badge">🎯 Expertise</div>
+                    <h2 class="section-title" data-i18n="skills.title">Skills & Proficiencies</h2>
+                    <p class="section-description" data-i18n="skills.subtitle">Continuous learning and skill development</p>
+                </div>
+                
+                <div class="skills-container">
+                    <!-- Academic Skills -->
+                    <div class="skill-category">
+                        <h3 class="skill-category-title" data-i18n="skills.category.academic">📚 Academic Skills</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <div class="skill-icon">中</div>
+                                    <span class="skill-name">Chinese Language</span>
+                                    <span class="skill-percent">25%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="25%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <div class="skill-icon">En</div>
+                                    <span class="skill-name">English</span>
+                                    <span class="skill-percent">50%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="50%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <div class="skill-icon">M</div>
+                                    <span class="skill-name">Mathematics</span>
+                                    <span class="skill-percent">55%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="55%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <div class="skill-icon">Sc</div>
+                                    <span class="skill-name">Science</span>
+                                    <span class="skill-percent">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Programming Skills -->
+                    <div class="skill-category">
+                        <h3 class="skill-category-title" data-i18n="skills.category.programming">💻 Programming Skills</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <div class="skill-icon">Py</div>
+                                    <span class="skill-name">Python</span>
+                                    <span class="skill-percent">60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <div class="skill-icon">C++</div>
+                                    <span class="skill-name">C++</span>
+                                    <span class="skill-percent">30%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="30%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <div class="skill-icon">H</div>
+                                    <span class="skill-name">HTML/CSS</span>
+                                    <span class="skill-percent">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Skills -->
+                    <div class="skill-category">
+                        <h3 class="skill-category-title" data-i18n="skills.category.other">🌟 Other Skills</h3>
+                        <div class="skill-chips">
+                            <div class="skill-chip">Table Tennis</div>
+                            <div class="skill-chip">Creative Writing</div>
+                            <div class="skill-chip">Minecraft Building</div>
+                            <div class="skill-chip">Problem Solving</div>
+                            <div class="skill-chip">Team Collaboration</div>
+                            <div class="skill-chip">Learning Agility</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge" data-i18n="about.badge">🧠 About Me</div>
+                    <h2 class="section-title" data-i18n="about.title">Beyond the Code</h2>
+                    <p class="section-description" data-i18n="about.subtitle">Get to know the person behind the projects</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="about-quote">
+                            "The only way to do great work is to love what you do."
+                            <div class="quote-author">- Steve Jobs</div>
+                        </div>
+                        
+                        <div class="about-paragraphs">
+                            <p>
+                                I'm Jack Xu, a secondary student based in Hong Kong SAR with a passion for 
+                                technology and creativity. When I'm not coding, you can find me practicing 
+                                table tennis, writing stories, or building elaborate systems in Minecraft.
+                            </p>
+                            <p>
+                                My journey in programming started with simple Python scripts and has evolved 
+                                into building full websites and applications. I believe in continuous learning 
+                                and pushing boundaries, whether it's mastering a new programming language or 
+                                improving my backhand in table tennis.
+                            </p>
+                            <p>
+                                I approach every project with curiosity and dedication, always looking for 
+                                ways to combine technical skills with creative expression.
+                            </p>
+                        </div>
+                        
+                        <div class="about-funfacts">
+                            <h4>Fun Facts About Me</h4>
+                            <div class="funfact-grid">
+                                <div class="funfact">
+                                    <div class="funfact-icon">🎮</div>
+                                    <div class="funfact-text">Avid Minecraft builder</div>
+                                </div>
+                                <div class="funfact">
+                                    <div class="funfact-icon">🏓</div>
+                                    <div class="funfact-text">Table tennis enthusiast</div>
+                                </div>
+                                <div class="funfact">
+                                    <div class="funfact-icon">📖</div>
+                                    <div class="funfact-text">Aspiring novelist</div>
+                                </div>
+                                <div class="funfact">
+                                    <div class="funfact-icon">💡</div>
+                                    <div class="funfact-text">Always learning something new</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-visual">
+                        <div class="rotating-cube">
+                            <div class="cube-face front">X</div>
+                            <div class="cube-face back">A</div>
+                            <div class="cube-face right">C</div>
+                            <div class="cube-face left">K</div>
+                            <div class="cube-face top"></div>
+                            <div class="cube-face bottom"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge" data-i18n="contact.badge">📬 Get In Touch</div>
+                    <h2 class="section-title" data-i18n="contact.title">Let's Connect</h2>
+                    <p class="section-description" data-i18n="contact.subtitle">Feel free to reach out for collaboration or just to say hello</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4 data-i18n="contact.card.email.title">Email</h4>
+                                <a href="mailto:garyhk2022@gmail.com">garyhk2022@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h4 data-i18n="contact.card.location.title">Location</h4>
+                                <p>Hong Kong SAR</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">🌐</div>
+                            <div class="contact-details">
+                                <h4 data-i18n="contact.card.social.title">Social Media</h4>
+                                <div class="social-mini">
+                                    <a href="https://github.com/ZYYO666" target="_blank" aria-label="GitHub">GitHub</a>
+                                    <span>•</span>
+                                    <a href="javascript:void(0)" onclick="pop('./static/img/xack.1211_qr.png')" aria-label="Instagram">Instagram</a>
+                                    <span>•</span>
+                                    <a href="javascript:void(0)" onclick="pop('./static/img/wa.jpg')" aria-label="WhatsApp">WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-cta">
+                        <h3>Ready to Create Something Amazing?</h3>
+                        <p>Whether it's a coding project, a table tennis match, or just a chat about technology, I'd love to hear from you!</p>
+                        <a href="mailto:garyhk2022@gmail.com" class="btn btn-primary btn-large">
+                            <span>Send Message</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <div class="logo-circle small">
+                            <img src="./static/img/logo.png" alt="Xack Logo">
+                        </div>
+                        <span class="footer-brand">Xack</span>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    
+                    <div class="footer-copyright">
+                        <p data-i18n="footer.copyright">© 2024 Jack Xu. All rights reserved.</p>
+                        <p class="footer-note" data-i18n="footer.made">Made with ❤️ in Hong Kong SAR</p>
+                    </div>
+                    
+                    <div class="footer-back-to-top">
+                        <button class="back-to-top" aria-label="Back to top">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 19V5M5 12l7-7 7 7" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Modal for QR Codes -->
+    <div class="modal" id="qr-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">×</button>
+            <div class="modal-body">
+                <img class="modal-image" src="" alt="QR Code">
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="./static/js/modern.js"></script>
+    <script src="./static/js/particles.js"></script>
+    
+    <!-- Analytics (keeping existing) -->
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({ id: "KFqltKSkJgQTGD9l", ck: "KFqltKSkJgQTGD9l" })</script>
 </body>
-<script src="./static/js/particles.js"></script>
-<script src="./static/js/script.js"> </script>
-
-<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({ id: "KFqltKSkJgQTGD9l", ck: "KFqltKSkJgQTGD9l" })</script>
-
 </html>
